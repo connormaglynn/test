@@ -19,4 +19,6 @@ jobs:
       - name: Echo Commit Message
         run: echo "${{ github.event.head_commit.message }}"
       - name: Echo Commit Message Title With git log --format=%B
-        run: echo "$(git log --format=%B -n 1)"
+        run: |
+          COMMIT_MESSAGE_HEADER=$(git log -1 --pretty=%B | head -n 1)
+          echo "${COMMIT_MESSAGE_HEADER}"
