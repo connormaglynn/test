@@ -22,3 +22,9 @@ jobs:
         run: |
           COMMIT_MESSAGE_HEADER=$(git log -1 --pretty=%B | head -n 1)
           echo "${COMMIT_MESSAGE_HEADER}"
+      - name: Save Commit Header
+        run: |
+          echo "COMMIT_MESSAGE_HEADER=$(git log -1 --pretty=%B | head -n 1)" >> $GITHUB_ENV
+      - name: Echo Commit Message Title With env  variable
+        run: |
+          echo "${COMMIT_MESSAGE_HEADER}"
